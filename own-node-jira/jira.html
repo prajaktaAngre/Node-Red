@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('jira',{
+        category: 'own-custom-node',
+        color: '#ffebc7',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"jira";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="jira">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+        <br>
+        <label for="node-input-date"><i class="fa fa-server" aria-hidden="true"></i>
+             IP Address</label>
+        <input type="text" id="node-input-date" placeholder="IP Address">
+        <br>
+        <label for="node-input-date"><i class="fa fa-plug" aria-hidden="true"></i>
+             Port No.</label>
+        <input type="text" id="node-input-date" placeholder="Port Number">
+        <br>
+        <label for="node-input-date"><i class="fa fa-tag"></i> Host</label>
+        <input type="text" id="node-input-date" placeholder="Host ID">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="jira">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

@@ -1,0 +1,92 @@
+<script type="text/html" data-template-name="jiraone">
+    <div class="form-row" id="node-inputs">
+        <label for="node-input-nameone"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-nameone" placeholder="Name">
+        <br>          
+        <label for="node-input-ip"><i class="fa fa-server" aria-hidden="true"></i>
+             IP Address</label>
+        <input type="text" id="node-input-ip" placeholder="IP Address" class="input">
+        <label for="node-input-port"><i class="fa fa-plug" aria-hidden="true"></i>
+             Port No.</label>
+        <input type="text" id="node-input-port" placeholder="Port Number">
+        <br>
+        <label for="node-input-host"><i class="fa fa-tag"></i> Host</label>
+        <input type="text" id="node-input-host" placeholder="Host ID"><br>  
+        <div id="content">       
+        </div>
+        <button type="button" value="+" onclick="addRow()">Add new item</button>
+       
+        <!-- another code  -->     
+</script>
+<script type="text/javascript">
+  RED.nodes.registerType('jiraone', {
+      category: 'own-custom-node',
+      color: '#f0f0f8',
+      defaults: {
+          nameone: { value: "" },
+          ip: { value: "" },
+          port: { value: "" },
+          host: { value: "" },
+          testIP: { value: "" }
+      },
+      inputs: 1,
+      outputs: 1,
+      icon: "github.png",
+    
+      label: function () {
+          return this.nameone || "jiraone";
+          return this.ip || "jiraone";
+          return this.port || "jiraone";
+          return this.host || "jiraone";
+          return this.testIP || "jiraone";
+      }
+  });
+//   console.log("hi from without $ function")
+
+
+  function AddItem() {
+      console.log("click works")
+      var ul = document.getElementById("node-inputs");
+      var li = document.createElement("input");
+      li.appendChild(document.createTextNode("new Item"));
+      ul.appendChild(li);
+
+      console.log("li", li)
+  }
+  function addRow() {
+      document.querySelector('#content').insertAdjacentHTML(
+          'afterbegin',
+          `<div class="">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name"><br>          
+      <label for="node-input-testIP"><i class="fa fa-server" aria-hidden="true"></i>
+           IP Address</label>
+      <input type="text" id="node-input-testIP" placeholder="IP Address" class="input">
+      <label for="node-input-port"><i class="fa fa-plug" aria-hidden="true"></i>
+           Port No.</label>
+      <input type="text" id="node-input-port" placeholder="Port Number"><br>
+      <label for="node-input-host"><i class="fa fa-tag"></i> Host</label>
+      <input type="text" id="node-input-host" placeholder="Host ID">
+   
+  </div>`
+      )
+
+  }
+
+
+  function removeRow(button) {
+      button.parentNode.remove()
+  }
+  $("#node-input-example1").typedInput({
+      type: "str",
+      types: ["str", "num", "bool"],
+      typeField: "#node-input-example1-type"
+  })
+  this.editor = RED.editor.createEditor({
+      id: 'node-input-example-editor',
+      mode: 'ace/mode/text',
+      value: this.exampleText
+  });
+
+
+</script>
